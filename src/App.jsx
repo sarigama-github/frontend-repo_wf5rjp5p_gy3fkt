@@ -1,28 +1,31 @@
-import { useState } from 'react'
+import UnwrapHero from './components/UnwrapHero';
+import ProductShowcase from './components/ProductShowcase';
+import CustomizeSection from './components/CustomizeSection';
+import TestimonialsCarousel from './components/TestimonialsCarousel';
+import WhatsAppFloating from './components/WhatsAppFloating';
+import { motion } from 'framer-motion';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-white text-rose-900 selection:bg-rose-200 selection:text-rose-900">
+      <UnwrapHero />
+      <ProductShowcase />
+      <CustomizeSection />
+      <TestimonialsCarousel />
 
-export default App
+      <footer className="py-14 bg-gradient-to-t from-rose-50 to-white text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6 }}
+          className="text-rose-700/90"
+        >
+          From handmade hearts to heartfelt clicks — every gift tells a story.
+        </motion.p>
+      </footer>
+
+      <WhatsAppFloating />
+    </div>
+  );
+}
